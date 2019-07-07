@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển</title>
+</head>
+<body>
+<input type="text" id="input"/>
+<select id="change">
+    <option value="VN">Tiếng Việt</option>
+    <option value="ENG">English</option>
+</select>
+<button onclick="trans()">Dịch</button>
+<p>Hiển thị:</p>
+<div id="display"></div>
+<script>
+    let vietnamese = ['chó', 'mèo', 'gà'];
+    let english = ['dog', 'cat', 'noob'];
+
+    function trans() {
+        let inputValue = document.getElementById('input').value;
+        let changeLanguage = document.getElementById('change').value;
+        let check = false;
+        for (let i = 0; i < vietnamese.length; i++) {
+            if (changeLanguage == 'VN') {
+                if (vietnamese[i] == inputValue) {
+                    check = true;
+                    document.getElementById('display').innerHTML = english[i];
+                }
+            }
+            if (changeLanguage == 'ENG') {
+                if (english[i] == inputValue) {
+                    check = true;
+                    document.getElementById('display').innerHTML = vietnamese[i];
+                }
+            }
+        }
+        if (check == false) {
+            document.getElementById('display').innerHTML = 'Không tìm thấy kết quả!';
+        }
+    }
+</script>
+</body>
+</html>
